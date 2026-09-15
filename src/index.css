@@ -1,0 +1,97 @@
+/*index.css*/
+
+:root {
+  /* ---- Color Palette ---- */
+  --color-primary: #B8622A;      /* burnt terracotta — buttons, main accent */
+  --color-primary-dark: #8C4A1F; /* deep rust — hover states, borders */
+  --color-primary-light: #E8A874;/* soft peach-orange — highlights, tags */
+  --color-bg: #FAF7F2;           /* warm off-white — page background */
+  --color-bg-alt: #F1E9DE;       /* slightly deeper cream — alternating sections */
+  --color-text: #2B211B;         /* warm near-black — body text */
+  --color-heading: #3D2817;      /* deep espresso — headings, distinct from body */
+  --color-white: #FFFFFF;
+  --color-border: #E3D6C6;       /* soft warm border color */
+  --color-overlay: rgba(43, 33, 27, 0.55); /* for image overlays behind hero text */
+ 
+  /* ---- Typography ---- */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+ 
+  --fs-h1: clamp(2.25rem, 4vw, 3.5rem);
+  --fs-h2: clamp(1.75rem, 3vw, 2.5rem);
+  --fs-h3: clamp(1.25rem, 2vw, 1.75rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+ 
+  /* ---- Spacing Scale ---- */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+ 
+  /* ---- Layout ---- */
+  --container-width: 1200px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+ 
+  /* ---- Shadows ---- */
+  --shadow-sm: 0 2px 8px rgba(43, 33, 27, 0.08);
+  --shadow-md: 0 4px 16px rgba(43, 33, 27, 0.12);
+  --shadow-lg: 0 8px 32px rgba(43, 33, 27, 0.16);
+ 
+  /* ---- Transitions ---- */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  
+  :root {
+    --color-primary: #D97A3E;      
+  --color-primary-dark: #E8A874; 
+  --color-primary-light: #6B3A1A;
+
+  --color-bg: #1C1712;          
+  --color-bg-alt: #241D16;      
+
+  --color-text: #EDE4D8;        
+  --color-heading: #F5EBDD;     
+
+  --color-white: #2B211B;        
+  --color-border: #3A2E22;       
+  --color-overlay: rgba(0, 0, 0, 0.6); 
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.55);
+  }
+  
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  height: 100dvh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#root {
+  height: inherit;
+}

@@ -1,0 +1,118 @@
+/* Navbar.css */
+.navbar {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) 2rem;
+  background: color-mix(in srgb, var(--color-primary) 0%, transparent);
+  z-index: 10;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.navbar-brand a {
+  font-family: var(--font-header, inherit);
+  color: var(--color-header-text, #2b2b2b);
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg, 0.75rem);
+}
+
+/* Hamburger button — hidden by default, shown under 900px */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 2px;
+  background: var(--color-bg, #2b2b2b);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.hamburger-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Overlay menu */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  background: color-mix(in srgb,var(--color-overlay) 60%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  z-index: 15;
+}
+
+.nav-overlay-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Inside the overlay, all links share the secondary look and lose their border */
+.nav-overlay .btn {
+  font-size: 1.25rem;
+  border: none;
+  background: transparent;
+  /* display: none; */
+}
+
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+}
+
+@media (min-width: 901px) {
+  .nav-overlay,
+  .hamburger {
+    display: none;
+  }
+}
+
+.hero-title {
+    color: var(--color-white);
+}
+
+.overlay-link::after {
+  transform: scaleX(0) !important;
+}
+
+.overlay-link:hover::after {
+    transform: scaleX(1) !important;
+}
