@@ -8,25 +8,27 @@ import useScrollReveal from '../hooks/useScrollReveal';
 //images
 import Salmon from '../assets/dish-salmon.png'
 import Rib from '../assets/dish-shortrib.png'
+import Tart from '../assets/dish-tart.png'
+import Interior1 from '../assets/restaurant-interior.png'
 
 const featuredDishes = [
   {
     name: 'Wood-Fired Salmon',
     description: 'Cedar-plank salmon, charred lemon, herb butter.',
     price: '$28',
-    image: '../assets/dish-salmon.png',
+    image: Salmon,
   },
   {
     name: 'Slow-Braised Short Rib',
     description: 'Red wine reduction, roasted root vegetables.',
     price: '$32',
-    image: '../assets/dish-shortrib.png',
+    image: Rib,
   },
   {
     name: 'Charred Heirloom Tomato Tart',
     description: 'Whipped ricotta, basil oil, flaky crust.',
     price: '$19',
-    image: '../assets/dish-tart.png',
+    image: Tart,
   },
 ];
 
@@ -63,7 +65,7 @@ export default function Home() {
       >
         <div className="container about-teaser-grid">
           <div className="about-teaser-image">
-            <img src="../assets/restaurant-interior.png" alt="Inside Amber & Oak" />
+            <img src={Interior1} alt="Inside Amber & Oak" />
           </div>
 
           <div className="about-teaser-content">
@@ -73,7 +75,7 @@ export default function Home() {
               served without pretension. Every dish on our table carries a
               little piece of where we came from.
             </p>
-            <Link to="/menu" className="btn btn-primary">
+            <Link to="/" className="btn btn-primary">
               See the Menu
             </Link>
           </div>
