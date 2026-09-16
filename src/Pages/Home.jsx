@@ -5,24 +5,28 @@ import './Styles/Home.css';
 import Navbar from '../Components/Nav';
 import useScrollReveal from '../hooks/useScrollReveal';
 
+//images
+import Salmon from '../assets/dish-salmon.png'
+import Rib from '../assets/dish-shortrib.png'
+
 const featuredDishes = [
   {
     name: 'Wood-Fired Salmon',
     description: 'Cedar-plank salmon, charred lemon, herb butter.',
     price: '$28',
-    image: '/src/assets/dish-salmon.png',
+    image: '../assets/dish-salmon.png',
   },
   {
     name: 'Slow-Braised Short Rib',
     description: 'Red wine reduction, roasted root vegetables.',
     price: '$32',
-    image: '/src/assets/dish-shortrib.png',
+    image: '../assets/dish-shortrib.png',
   },
   {
     name: 'Charred Heirloom Tomato Tart',
     description: 'Whipped ricotta, basil oil, flaky crust.',
     price: '$19',
-    image: '/src/assets/dish-tart.png',
+    image: '../assets/dish-tart.png',
   },
 ];
 
@@ -59,7 +63,7 @@ export default function Home() {
       >
         <div className="container about-teaser-grid">
           <div className="about-teaser-image">
-            <img src="/src/assets/restaurant-interior.png" alt="Inside Amber & Oak" />
+            <img src="../assets/restaurant-interior.png" alt="Inside Amber & Oak" />
           </div>
 
           <div className="about-teaser-content">
