@@ -68,7 +68,7 @@
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  background: color-mix(in srgb,var(--color-overlay) 60%, transparent);
+  background: var(--color-overlay-alt); /* fallback for anyone without color-mix */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   opacity: 0;
@@ -76,6 +76,12 @@
   transform: translateY(-10px);
   transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
   z-index: 15;
+}
+@supports (background: color-mix(in srgb, var(--color-overlay) 60%, transparent)) {
+  .nav-overlay {
+    background: color-mix(in srgb, var(--color-overlay) 60%, transparent);
+    backdrop-filter: blur(12px);
+  }
 }
 
 .nav-overlay-open {

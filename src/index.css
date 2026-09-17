@@ -5,13 +5,14 @@
   --color-primary: #B8622A;      /* burnt terracotta — buttons, main accent */
   --color-primary-dark: #8C4A1F; /* deep rust — hover states, borders */
   --color-primary-light: #E8A874;/* soft peach-orange — highlights, tags */
-  --color-bg: #FAF7F2;           /* warm off-white — page background */
+  --color-bg: #faf7f2;           /* warm off-white — page background */
   --color-bg-alt: #F1E9DE;       /* slightly deeper cream — alternating sections */
   --color-text: #2B211B;         /* warm near-black — body text */
   --color-heading: #3D2817;      /* deep espresso — headings, distinct from body */
   --color-white: #FFFFFF;
   --color-border: #E3D6C6;       /* soft warm border color */
   --color-overlay: rgba(43, 33, 27, 0.55); /* for image overlays behind hero text */
+  --color-overlay-alt: rgba(61, 40, 23, 0.82);
  
   /* ---- Typography ---- */
   --font-heading: 'Playfair Display', Georgia, serif;
