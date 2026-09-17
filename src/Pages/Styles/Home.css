@@ -155,10 +155,91 @@
   transform: translateY(0);
 }
 
+.gallery {
+  overflow: hidden;
+}
+
+.gallery-rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.gallery-row {
+  overflow: hidden;
+  width: 100%;
+  /* Fades edges so the loop point isn't a hard cut */
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+.gallery-track {
+  display: flex;
+  gap: var(--space-sm);
+  width: max-content;
+}
+
+.gallery-row-left {
+  animation: scroll-left 25s linear infinite;
+}
+
+.gallery-row-right {
+  animation: scroll-right 30s linear infinite;
+}
+
+.gallery-item {
+  flex: 0 0 auto;
+  width: 220px;
+  aspect-ratio: 5 / 3;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .gallery-row--left .gallery-track,
+  .gallery-row--right .gallery-track {
+    animation: none;
   }
 }

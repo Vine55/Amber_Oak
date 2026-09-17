@@ -11,6 +11,33 @@ import Rib from '../assets/dish-shortrib.png'
 import Tart from '../assets/dish-tart.png'
 import Interior1 from '../assets/restaurant-interior.png'
 
+import food1 from '../assets/food-1.png'
+import food2 from '../assets/food-2.png'
+import food3 from '../assets/food-3.png'
+import food4 from '../assets/food-4.png'
+import food5 from '../assets/food-5.png'
+import food6 from '../assets/food-6.png'
+import food7 from '../assets/food-7.png'
+import food8 from '../assets/food-8.png'
+
+import atmosphere1 from '../assets/atmosphere-1.png'
+import atmosphere2 from '../assets/atmosphere-2.png'
+import atmosphere3 from '../assets/atmosphere-3.png'
+import atmosphere4 from '../assets/atmosphere-4.png'
+import atmosphere5 from '../assets/atmosphere-5.png'
+import atmosphere6 from '../assets/atmosphere-6.png'
+import atmosphere7 from '../assets/atmosphere-7.png'
+import atmosphere8 from '../assets/atmosphere-8.png'
+
+import drinks1 from '../assets/drinks-1.png'
+import drinks2 from '../assets/drinks-2.png'
+import drinks3 from '../assets/drinks-3.png'
+import drinks4 from '../assets/drinks-4.png'
+import drinks5 from '../assets/drinks-5.png'
+import drinks6 from '../assets/drinks-6.png'
+import drinks7 from '../assets/drinks-7.png'
+import drinks8 from '../assets/drinks-8.png'
+
 const featuredDishes = [
   {
     name: 'Wood-Fired Salmon',
@@ -32,9 +59,63 @@ const featuredDishes = [
   },
 ];
 
+// Row 1 — Food close-ups (swap these paths for your real assets)
+const foodImages = [
+  food1,
+  food2,
+  food3,
+  food4,
+  food5,
+  food6,
+  food7,
+  food8
+]
+
+// Row 2 — Atmosphere / interior
+const atmosphereImages = [
+  atmosphere1,
+  atmosphere2,
+  atmosphere3,
+  atmosphere4,
+  atmosphere5,
+  atmosphere6,
+  atmosphere7,
+  atmosphere8,
+];
+
+// Row 3 — People & moments
+const drinksImages = [
+  drinks1,
+  drinks2,
+  drinks3,
+  drinks4,
+  drinks5,
+  drinks6,
+  drinks7,
+  drinks8,
+];
+
+function GalleryRow({ images, direction, label }) {
+  // Duplicate the row once so the marquee can loop seamlessly
+  const looped = [...images, ...images];
+
+  return (
+    <div className={`gallery-row`} aria-label={label}>
+      <div className={`gallery-track gallery-row-${direction}`}>
+        {looped.map((src, i) => (
+          <div className="gallery-item" key={`${label}-${i}`}>
+            <img src={src} alt="" loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const [aboutRef, aboutVisible] = useScrollReveal();
   const [dishesRef, dishesVisible] = useScrollReveal();
+  const [galleryRef, galleryVisible] = useScrollReveal();
 
   return (
     <div className="home page">
@@ -112,7 +193,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Remaining sections (Gallery, Testimonials, CTA, Footer) go here later */}
+      <section className={`gallery section reveal ${galleryVisible ? 'reveal-visible':''}`} ref={galleryRef}>
+      <div className="container">
+        <h2>Gallery</h2>
+        <p>A glimpse at what to expect.</p>
+      </div>
+
+      <div className="gallery-rows">
+        <GalleryRow images={foodImages} direction="left" label="Food" />
+        <GalleryRow images={atmosphereImages} direction="right" label="Atmosphere" />
+        <GalleryRow images={drinksImages} direction="left" label="Moments" />
+      </div>
+    </section>
     </div>
   );
 }
