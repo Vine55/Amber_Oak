@@ -49,7 +49,7 @@ export default function Navbar() {
 
       <div className="navbar-links">
         {navLinks.map((link) => (
-          <Link key={link.to} to={link.to} className="btn btn-secondary">
+          <Link key={link.label} to={link.to} className="btn btn-secondary">
             {link.label}
           </Link>
         ))}
@@ -75,17 +75,18 @@ export default function Navbar() {
       <div
         id="mobile-navigation"
         className={`nav-overlay ${isOpen ? 'nav-overlay-open' : ''}`}
-        aria-hidden={!isOpen}
+        inert={!isOpen}
       >
         <p className="nav-overlay-brand">Amber & Oak</p>
 
         <div className="nav-overlay-links">
           {navLinks.map((link) => (
             <Link
-              key={link.to}
+              key={link.label}
               to={link.to}
               className="btn btn-secondary overlay-link"
               tabIndex={isOpen ? 0 : -1}
+              onClick={() => setIsOpen(false)}
             >
               {link.label}
             </Link>
