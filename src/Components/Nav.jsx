@@ -1,46 +1,104 @@
-// Navbar.jsx
-import { useState } from 'react';
-
-import { Link } from 'react-router-dom';
-
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './Styles/Nav.css';
+
+const navLinks = [
+  { label: 'Home', to: '/' },
+  { label: 'Menu', to: '/' },
+  { label: 'About', to: '/' },
+  { label: 'Contact', to: '/' },
+];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   return (
     <nav className="navbar">
-      <div className="navbar-brand">
-        <span></span>
-      </div>
+      <Link to="/" className="navbar-brand" aria-label="Amber & Oak home">
+        <span className="brand-main">Amber</span>
+        <span className="brand-symbol">&</span>
+        <span className="brand-main">Oak</span>
+      </Link>
 
-      {/* Desktop links */}
       <div className="navbar-links">
-        <Link to="/" className="btn btn-secondary">Home</Link>
-        <Link to="/" className="btn btn-secondary">Menu</Link>
-        <Link to="/" className="btn btn-secondary">Contact</Link>
-        <Link to="/" className="btn btn-primary">Reserve a Table</Link>
+        {navLinks.map((link) => (
+          <Link key={link.to} to={link.to} className="btn btn-secondary">
+            {link.label}
+          </Link>
+        ))}
+
+        <Link to="/reservations" className="btn btn-primary">
+          Reserve a Table
+        </Link>
       </div>
 
-      {/* Hamburger toggle */}
       <button
+        type="button"
         className={`hamburger ${isOpen ? 'hamburger-open' : ''}`}
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label="Toggle menu"
+        onClick={() => setIsOpen((current) => !current)}
+        aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
         aria-expanded={isOpen}
+        aria-controls="mobile-navigation"
       >
         <span></span>
         <span></span>
         <span></span>
       </button>
 
-      {/* Overlay menu */}
-      <div className={`nav-overlay ${isOpen ? 'nav-overlay-open' : ''}`}>
-        <h1 className='hero-title'>Amber&Oak</h1>
-        <Link to="/" className="btn btn-secondary overlay-link" onClick={() => setIsOpen(false)}>Home</Link>
-        <Link to="/" className="btn btn-secondary overlay-link" onClick={() => setIsOpen(false)}>Menu</Link>
-        <Link to="/" className="btn btn-secondary overlay-link" onClick={() => setIsOpen(false)}>Contact</Link>
-        <Link to="/" className="btn overlay-link btn-primary" onClick={() => setIsOpen(false)}>Reserve a Table</Link>
+      <div
+        id="mobile-navigation"
+        className={`nav-overlay ${isOpen ? 'nav-overlay-open' : ''}`}
+        aria-hidden={!isOpen}
+      >
+        <p className="nav-overlay-brand">Amber & Oak</p>
+
+        <div className="nav-overlay-links">
+          {navLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className="btn btn-secondary overlay-link"
+              tabIndex={isOpen ? 0 : -1}
+            >
+              {link.label}
+            </Link>
+          ))}
+
+          <Link
+            to="/reservations"
+            className="btn btn-primary"
+            tabIndex={isOpen ? 0 : -1}
+          >
+            Reserve a Table
+          </Link>
+        </div>
       </div>
     </nav>
   );

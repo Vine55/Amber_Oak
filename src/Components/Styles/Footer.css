@@ -2,10 +2,10 @@
 
 .footer {
   position: relative;
-  background-color: var(--color-primary);
+  background-color: var(--color-heading);
   color: var(--color-white);
   overflow: hidden;
-  padding: var(--space-2xl) 0 var(--space-md);
+  padding: var(--space-xl) 0 var(--space-md);
 }
 
 .footer h3,
@@ -14,9 +14,11 @@
   margin-bottom: var(--space-sm);
 }
 
-.footer p,
-.footer a {
+.footer p {
   color: var(--color-white);
+}
+.footer a {
+  color: var(--color-primary-light);
 }
 
 .footer a {

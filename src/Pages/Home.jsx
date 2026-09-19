@@ -7,9 +7,7 @@ import Footer from '../Components/Footer'
 import useScrollReveal from '../hooks/useScrollReveal';
 
 //images
-import Salmon from '../assets/dish-salmon.png'
-import Rib from '../assets/dish-short-rib.png'
-import Tart from '../assets/dish-tart.png'
+import HeroImg from '../assets/Hero.png'
 import Interior1 from '../assets/restaurant-interior.png'
 
 const dishes = Object.values(import.meta.glob('../assets/dish-*.png', {eager: true, import: 'default'}))
@@ -51,16 +49,32 @@ const drinksImages = Object.values(
 );
 
 function GalleryRow({ images, direction, label }) {
-  const looped = [...images, ...images];
+  const duplicatedImages = [...images, ...images];
 
   return (
-    <div className={`gallery-row`} aria-label={label}>
-      <div className={`gallery-track gallery-row-${direction}`}>
-        {looped.map((src, i) => (
-          <div className="gallery-item" key={`${label}-${i}`}>
-            <img src={src} alt="" loading="lazy" />
-          </div>
-        ))}
+    <div className="gallery-row" aria-label={label}>
+
+      <div className="gallery-track-wrap">
+        <div className={`gallery-track gallery-row-${direction}`}>
+          {duplicatedImages.map((src, i) => {
+            const duplicate = i >= images.length;
+
+            return (
+              <div
+                className="gallery-item"
+                key={`${label}-${i}`}
+                aria-hidden={duplicate}
+              >
+                <img
+                  src={src}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
@@ -73,19 +87,38 @@ export default function Home() {
 
   return (
     <div className="home page">
-      <section
-        className="hero home-hero">
+      <section className="hero home-hero">
+        <div className="hero-media">
+          <img
+            src={HeroImg}
+            alt=""
+            fetchPriority="high"
+            decoding="async"
+          />
+        </div>
         <Navbar />
         <div className="hero-content">
           <h1 className="hero-title">Amber & Oak</h1>
+
           <p className="hero-subtitle">
             Wood-fired dishes, warm evenings, and a table always waiting for you.
           </p>
+
           <div className="hero-actions">
-            <button className="btn btn-primary">Reserve a Table</button>
-            <Link to="/" className="btn btn-secondary">
-              View Menu
+            <Link to="/" className="btn btn-primary">
+              Reserve a Table
             </Link>
+
+            <Link to="/" className="btn btn-secondary hero-cta-secondary">
+              Explore the Menu{' '}
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+
+          <div className="hero-meta">
+            <span>Tue–Sun</span>
+            <span>5pm–11pm</span>
+            <span>Walk-ins welcome</span>
           </div>
         </div>
       </section>
@@ -125,16 +158,30 @@ export default function Home() {
 
           <div className="grid grid-3 featured-dishes-grid">
             {featuredDishes.map((dish) => (
-              <div className="card featured-dish-card" key={dish.name}>
-                <img src={dish.image} alt={dish.name} />
+              <article className="card featured-dish-card">
+                <div className="featured-dish-image">
+                  <img
+                    src={dish.image}
+                    alt={dish.name}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span className="dish-tag">Wood-fired</span>
+                </div>
+
                 <div className="card-body">
                   <div className="featured-dish-header">
                     <h3>{dish.name}</h3>
                     <span className="featured-dish-price">{dish.price}</span>
                   </div>
+
                   <p className="text-small">{dish.description}</p>
+
+                  <Link to="/" className="dish-link">
+                    Explore dish <span aria-hidden="true">→</span>
+                  </Link>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
 
@@ -153,7 +200,7 @@ export default function Home() {
       <div className="gallery-rows">
         <GalleryRow images={foodImages} direction="left" label="Food" />
         <GalleryRow images={atmosphereImages} direction="right" label="Atmosphere" />
-        <GalleryRow images={drinksImages} direction="left" label="Moments" />
+        <GalleryRow images={drinksImages} direction="left" label="Drinks & Bar" />
       </div>
     </section>
     <Footer />

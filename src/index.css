@@ -48,13 +48,13 @@
   --transition-base: 0.3s ease;
 }
 
-* {
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html {
+/*html {
   scroll-behavior: smooth;
 }
 
@@ -67,8 +67,37 @@ body {
   height: 100dvh;
   overflow-y: scroll;
   overflow-x: hidden;
+} */
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100dvh;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  overflow-x: clip;
+  padding-bottom: 0;
+  height: 100dvh;
 }
 
 #root {
+  min-height: 100dvh;
   height: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-primary-light);
+  outline-offset: 3px;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-white);
 }
