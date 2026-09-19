@@ -45,11 +45,6 @@
   padding: 0 var(--space-md);
 }
 
-.hero h1,
-.hero p {
-  color: var(--color-white);
-}
-
 .hero-title {
   font-size: clamp(2.75rem, 6vw, 4.5rem);
   margin-bottom: var(--space-sm);
@@ -214,6 +209,11 @@
   object-fit: cover;
 }
 
+.gallery-row:hover .gallery-track,
+.gallery-row:focus-within .gallery-track {
+  animation-play-state: paused;
+}
+
 @keyframes scroll-left {
   from {
     transform: translateX(0);
@@ -239,7 +239,7 @@
     transition: none;
   }
   .gallery-row--left .gallery-track,
-  .gallery-row--right .gallery-track {
+  .gallery-row-right .gallery-track {
     animation: none;
   }
 }

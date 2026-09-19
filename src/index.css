@@ -48,30 +48,6 @@
   --transition-base: 0.3s ease;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  
-  :root {
-    --color-primary: #D97A3E;      
-  --color-primary-dark: #E8A874; 
-  --color-primary-light: #6B3A1A;
-
-  --color-bg: #1C1712;          
-  --color-bg-alt: #241D16;      
-
-  --color-text: #EDE4D8;        
-  --color-heading: #F5EBDD;     
-
-  --color-white: #2B211B;        
-  --color-border: #3A2E22;       
-  --color-overlay: rgba(0, 0, 0, 0.6); 
-
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.45);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.55);
-  }
-  
-} */
-
 * {
   margin: 0;
   padding: 0;

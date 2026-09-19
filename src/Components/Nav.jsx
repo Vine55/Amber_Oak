@@ -37,10 +37,10 @@ export default function Navbar() {
       {/* Overlay menu */}
       <div className={`nav-overlay ${isOpen ? 'nav-overlay-open' : ''}`}>
         <h1 className='hero-title'>Amber&Oak</h1>
-        <Link to="/" className="btn btn-secondary overlay-link">Home</Link>
-        <Link to="/" className="btn btn-secondary overlay-link">Menu</Link>
-        <Link to="/" className="btn btn-secondary overlay-link">Contact</Link>
-        <Link to="/" className="btn btn-secondary overlay-link">Reserve a Table</Link>
+        <Link to="/" className="btn btn-secondary overlay-link" onClick={() => setIsOpen(false)}>Home</Link>
+        <Link to="/" className="btn btn-secondary overlay-link" onClick={() => setIsOpen(false)}>Menu</Link>
+        <Link to="/" className="btn btn-secondary overlay-link" onClick={() => setIsOpen(false)}>Contact</Link>
+        <Link to="/" className="btn overlay-link btn-primary" onClick={() => setIsOpen(false)}>Reserve a Table</Link>
       </div>
     </nav>
   );

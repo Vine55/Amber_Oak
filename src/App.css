@@ -102,6 +102,13 @@ p {
   transition: background-color var(--transition-base), transform var(--transition-fast), color var(--transition-base);
 }
 
+a:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
 .btn-primary {
   background-color: var(--color-primary);
   color: var(--color-white);
