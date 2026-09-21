@@ -93,7 +93,7 @@ export default function Navbar() {
           ))}
 
           <Link
-            to="/reservations"
+            to="/"
             className="btn btn-primary"
             tabIndex={isOpen ? 0 : -1}
           >

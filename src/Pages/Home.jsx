@@ -158,7 +158,7 @@ export default function Home() {
 
           <div className="grid grid-3 featured-dishes-grid">
             {featuredDishes.map((dish) => (
-              <article className="card featured-dish-card">
+              <article className="card featured-dish-card" key={dish.name}>
                 <div className="featured-dish-image">
                   <img
                     src={dish.image}
