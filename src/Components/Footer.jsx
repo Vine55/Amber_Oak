@@ -32,7 +32,7 @@ export default function Footer() {
         <p className="text-small">&copy; 2026 Amber & Oak. All rights reserved.</p>
         <p className="text-small footer-credit">
           Site by{' '}
-          <a href="/" target="_blank" rel="noopener noreferrer">
+          <a href="https://nnacheta-ebuka.vercel.app" target="_blank" rel="noopener noreferrer">
             Vine55 — Web Design
           </a>
         </p>
